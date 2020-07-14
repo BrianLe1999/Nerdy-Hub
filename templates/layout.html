@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>{% block title %}{% endblock %}</title>
+      <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/layout_style.css') }}">
+      {% block head %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class= "container">
+        <h2>Nerdy Hub</h2>
+        <nav>
+          <ul class = "nav_links">
+            <li class = "links"><a href= {{ url_for('index')}}>Home</a></li>
+            <li class = "links"><a href= {{ url_for('search')}}>Search</a></li>
+            <li class = "links"><a href= {{ url_for('log_out')}}>Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    {% block body%}
+    {% endblock%}
+  </body>
+</html>

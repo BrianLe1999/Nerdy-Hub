@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Nerdy Hub{% endblock %}
+{% block head %}
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/index.css') }}">
+{% endblock %}
+{% block body %}
+    <img src="{{url_for('static', filename='knowledge.png')}}" width= "50%" height = "30%"/>
+    <h1 class = "heading"> Welcome to Nerdy Hub!</h1>
+    <p class = "paragraph">
+        In Nerdy Hub, one of the best ever book-review websites,<br>
+        you can search for more 5000 books, read reviews from <br>
+        other readers like you, and provide your own reviews <br>
+        as well. <br><br> To get started, please log in below or
+        <a class = "register_link" href ={{url_for('register')}}>register</a> here.<br><br>
+    </p>
+        {% if error %}
+        <p class="error"> {{ error }}</p>
+        {% endif %}
+
+    <form class ="important" action="{{ url_for('index')}}" method ="post">
+        <label class = "label" for="username">Username</label><br>
+        <input class = "box" type="text" name="username"><br>
+        <label class="label" for="password">Password</label><br>
+        <input class = "box" type="password" name="password"><br>
+        <button class = "btn">Login</button>
+    </form>
+{% endblock %}

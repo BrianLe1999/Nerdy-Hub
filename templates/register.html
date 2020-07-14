@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}Register Page{% endblock %}
+{% block head %}
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/register.css') }}">
+{% endblock %}
+{% block body %}
+    <h1 class = "heading"> Welcome to Nerdy Hub!</h1> <br> <br>
+    <h1 class = "subheading"> {{error}} </h1>
+    </p>
+    <form class ="important" action="{{ url_for('process_new_user')}}" method ="post">
+        <label class = "label" for="username">Username</label><br>
+        <input class = "box" type="text" name="username"><br>
+        <label class="label" for="password">Password</label><br>
+        <input class = "box" type="password" name="password"><br>
+        <label class="label" for="first_name">First Name</label><br>
+        <input class = "box" type="text" name="first_name"><br>
+        <label class="label" for="last_name">Last Name</label><br>
+        <input class = "box" type="text" name="last_name"><br>
+        <button class = "btn">Register</button>
+        <label class = "sign_in_link"> Have an account? <a href = {{url_for('index')}}>Sign in</a></label>
+    </form>
+{% endblock %}

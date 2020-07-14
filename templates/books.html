@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block title %}{{book.title}}{% endblock %}
+{% block head %}
+    <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/books.css') }}">
+{% endblock %}
+{% block body %}
+    <div class="split left">
+        <div class="left">
+            <p>
+              <p class ="title">
+                {{book.title}}
+              </p>
+              <p class = "element">
+                Author: {{book.author}}<br>
+                Publication Year: {{book.year}}<br>
+                ISBN: {{book.isbn}}<br>
+                Average Ratings (from Goodreads*): {{average_rating}} out of 5<br>
+                Number of Ratings (from Goodreads*): {{num_ratings}}<br>
+              </p>
+            </p>
+            <form class ="reviews" action="{{url_for('review')}}" method ="post">
+              <input type="hidden" name="book_isbn" value={{book.isbn}} >
+              <label class = "heading" for="rating">Your rating</label><br>
+              <input type="radio" id="rating" name="rating" value="five">
+              <label class = "option" for="rating">5</label>
+              <input type="radio" name="rating" value="four">
+              <label class = "option" for="rating">4</label>
+              <input type="radio"  name="rating" value="three">
+              <label class = "option" for="rating">3</label>
+              <input type="radio"  name="rating" value="two">
+              <label class = "option" for="rating">2</label>
+              <input type="radio"  name="rating" value="one">
+              <label class = "option" for="">1</label><br>
+              <label class = "heading" for="review_content">Your feedback</label><br>
+              <textarea name = "review_content" rows = "7" cols = "60"  placeholder="Your thoughtful feedback is valuable to us!"></textarea><br>
+              <button class = "btn">Submit!</button>
+            </form>
+
+          </div>
+        </div>
+
+    <div class="split right">
+      <div class="right">
+        <p class = "title"> Reviews</p>
+        <ul class = "review_content">
+            {% for review in reviews %}
+            <li class = "review_item">
+              <p> {{ review.first_name }} {{review.last_name}} rated this book {{review.rating}} out of 5 <br><br>
+                 {{review.review_content}} <br>
+              </p>
+            </li>
+            {% else %}
+            <li class = "review_item">No reviews contributed for this book.</li>
+            {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+.table {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  border-collapse: collapse;
+  width: 95%;
+  margin-left: 30px;
+  margin-right: 20px;
+  background-color: #55d6aa;
+    counter-reset: row-num;
+}
+.table td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+.content {
+  counter-reset: row-num
+  counter-increment: row-num;
+}
+.table td:first-child::before {
+  counter-increment: row-num;
+  content: counter(row-num);
+}
+.title {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 30px;
+  margin-left: 30px;
+}

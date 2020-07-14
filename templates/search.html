@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Page!{% endblock %}
+{% block head %}
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/search.css') }}">
+{% endblock %}
+{% block body %}
+  <p class = "welcome_message"> Welcome back, {{ user }}</p>
+  <form class ="important" action="{{ url_for('results')}}" method ="post">
+    <label class = "heading" for="category">Select a search category</label><br>
+    <input type="radio" id="isbn" name="category" value="isbn">
+    <label class = "option" for="isbn">ISBN</label><br>
+    <input type="radio" id="title" name="category" value="title">
+    <label class = "option" for="title">TITLE</label><br>
+    <input type="radio" id="author" name="category" value="author">
+    <label class="option" for="author">AUTHOR</label><br>
+    <input type="radio" id="year" name="category" value="year">
+    <label class="option" for="year">YEAR</label><br>
+    <label class = "heading" for="credential">Search for:</label><br>
+    <input class = "box" type="text" name = "credential" placeholder="For example: The Dark Is Rising"><br>
+    <button class = "btn">Search!</button>
+  </form>
+  </form>
+{% endblock %}

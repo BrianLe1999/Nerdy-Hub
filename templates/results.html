@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}Results{% endblock %}
+{% block head %}
+  <link rel="stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/results.css') }}">
+{% endblock %}
+{% block body %}
+    <h2 class = "title">Here are the results for "{{query}}". Please click on titles to add reviews!</h2>
+    <table class="table">
+        <tr>
+          <th>Index</th>
+          <th>ISBN</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Year</th>
+        </tr>
+        {% for book in books %}
+        <tr class = "content">
+          <td></td>
+          <th>{{book.isbn}}</th>
+          <th><a href = "{{url_for('books', name = book.title)}}">{{book.title}}</a></th>
+          <th>{{book.author}}</th>
+          <th>{{book.year}}</th>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}
